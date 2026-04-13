@@ -1,0 +1,47 @@
+:root {
+  --bg-dark: #020617;
+  --bg-light: #f9fafb;
+  --text-dark: #0f172a;
+  --text-light: #e5e7eb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body[data-theme="dark"] {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+body[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Simple fade-in animation */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading overlay */
+#loading-overlay {
+  display: none;
+}
+#loading-overlay.active {
+  display: flex;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
+}

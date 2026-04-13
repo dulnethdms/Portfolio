@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact an AI student for collaboration or opportunities." />
+  <title>AI Portfolio | Contact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <header class="border-b border-slate-800">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">AI</span>
+        <span class="font-semibold tracking-wide">AI Student Portfolio</span>
+      </a>
+      <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
+        Toggle Theme
+      </button>
+      <ul class="hidden md:flex gap-6 text-sm">
+        <li><a href="index.html" class="hover:text-indigo-400">Home</a></li>
+        <li><a href="about.html" class="hover:text-indigo-400">About</a></li>
+        <li><a href="projects.html" class="hover:text-indigo-400">Projects</a></li>
+        <li><a href="contact.html" class="hover:text-indigo-400">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-1 max-w-3xl mx-auto px-4 py-10 fade-in">
+    <section>
+      <header class="mb-4">
+        <h1 class="text-3xl font-bold mb-1">Contact</h1>
+        <p class="text-slate-300 text-sm">Reach out for collaborations, internships, or questions.</p>
+      </header>
+
+      <form id="contact-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div>
+          <label for="name" class="block text-sm mb-1">Name</label>
+          <input id="name" name="name" type="text" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm mb-1">Email</label>
+          <input id="email" name="email" type="email" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm" />
+        </div>
+        <div>
+          <label for="message" class="block text-sm mb-1">Message</label>
+          <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm"></textarea>
+        </div>
+        <button type="submit" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
+          Send Message
+        </button>
+        <p id="contact-status" class="text-xs mt-2"></p>
+      </form>
+
+      <section class="mt-8">
+        <h2 class="text-xl font-semibold mb-2">Social</h2>
+        <ul class="flex gap-4 text-sm text-indigo-400">
+          <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com/yourusername" target="_blank" rel="noopener">Twitter</a></li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 mt-10">
+    <div class="max-w-3xl mx-auto px-4 py-6 text-xs text-slate-400">
+      &copy; <span id="year"></span> Your Name.
+    </div>
+  </footer>
+
+  <script src="js/env.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Reuse common head -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Dulneth Damsira" />
+    <title>AI Portfolio | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+    <div id="loading-overlay" class="fixed inset-0 bg-slate-900/80 z-50 items-center justify-center">
+      <div class="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+
+    <header class="border-b border-slate-800">
+      <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">DD</span>
+          <span class="font-semibold tracking-wide">Dulneth Damsira</span>
+        </a>
+        <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
+          Theme
+        </button>
+        <ul class="hidden md:flex gap-6 text-sm">
+          <li><a href="index.html" class="hover:text-indigo-400">Home</a></li>
+          <li><a href="about.html" class="hover:text-indigo-400">About</a></li>
+          <li><a href="projects.html" class="hover:text-indigo-400">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-400">Contact</a></li>
+          <li><a href="login.html" class="hover:text-indigo-400">Admin</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center fade-in">
+        <article>
+          <p class="text-sm uppercase tracking-[0.3em] text-indigo-400 mb-3">Artificial Intelligence Student</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Hi, I'm <span class="text-indigo-400">Dulneth Damsira</span> an undergraduate AI student passionate about building intelligent systems.
+          </h1>
+          <p class="text-slate-300 mb-6">
+            I’m an undergraduate AI student focused on machine learning, deep learning, and intelligent web applications.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="projects.html" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
+              View Projects
+            </a>
+            <a href="about.html" class="px-5 py-2 rounded-full border border-slate-600 text-sm font-medium hover:border-indigo-400">
+              Learn More
+            </a>
+          </div>
+        </article>
+        <aside class="relative">
+          <div class="w-full h-64 md:h-80 rounded-3xl bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400 blur-3xl opacity-40 absolute -z-10"></div>
+          <div class="bg-slate-900/60 border border-slate-700 rounded-3xl p-6 h-full flex flex-col justify-between">
+            <h2 class="text-lg font-semibold mb-4">AI Focus Areas</h2>
+            <ul class="space-y-3 text-sm">
+              <li>• Automation</li>
+              <li>• Generative AI</li>
+              <li>• Machine Learning</li>
+              <li>• AI-powered Web Applications</li>
+            </ul>
+            <div class="mt-6 text-xs text-slate-400">
+          <!-- <p>Currently exploring: <span class="text-indigo-400">Transformers & LLMs</span></p>-->
+
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Featured projects -->
+      <section class="max-w-6xl mx-auto px-4 py-10">
+        <header class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-semibold">Featured AI Projects</h2>
+          <a href="projects.html" class="text-sm text-indigo-400 hover:underline">View all</a>
+        </header>
+        <div id="featured-projects" class="grid md:grid-cols-3 gap-6">
+          <!-- Filled dynamically by JS -->
+        </div>
+      </section>
+
+      <!-- AI-specific section -->
+      <section class="max-w-6xl mx-auto px-4 py-10">
+        <article class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8">
+          <h2 class="text-2xl font-semibold mb-3">Why Artificial Intelligence?</h2>
+          <p class="text-slate-300 mb-4">
+            I’m passionate about building systems that can perceive, reason, and learn from data—bridging theory with real-world impact.
+          </p>
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div>
+              <h3 class="font-semibold mb-1 text-indigo-300">Machine Learning</h3>
+              <p>Regression, classification, clustering, and model evaluation using Python and popular ML libraries.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1 text-indigo-300">Deep Learning</h3>
+              <p>Neural networks for vision and text tasks, experimenting with CNNs, RNNs, and transformers.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1 text-indigo-300">AI for the Web</h3>
+              <p>Integrating ML models into full-stack applications to create intelligent user experiences.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800 mt-10">
+      <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+        <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+        <p>Built with HTML, Tailwind CSS, JavaScript, Node.js, and MongoDB.</p>
+      </div>
+    </footer>
+
+    <!-- Chatbot widget -->
+    <div id="chatbot-widget" class="fixed bottom-4 right-4">
+      <button id="chatbot-toggle" class="bg-indigo-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+        ?
+      </button>
+      <div id="chatbot-panel" class="hidden mt-2 w-72 bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm">
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-semibold">AI Assistant</h3>
+          <button id="chatbot-close" class="text-xs text-slate-400">Close</button>
+        </div>
+        <div id="chatbot-messages" class="h-40 overflow-y-auto mb-2 text-xs space-y-1"></div>
+        <form id="chatbot-form" class="flex gap-2">
+          <label class="sr-only" for="chatbot-input">Ask a question</label>
+          <input id="chatbot-input" type="text" class="flex-1 px-2 py-1 rounded bg-slate-800 border border-slate-700 text-xs" placeholder="Ask about my skills or projects..." />
+          <button class="px-2 py-1 bg-indigo-500 rounded text-xs">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/env.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+  </body>
+</html>
