@@ -19,6 +19,77 @@ body[data-theme="light"] {
   color: var(--text-dark);
 }
 
+body[data-theme="light"] article,
+body[data-theme="light"] form,
+body[data-theme="light"] #chatbot-panel,
+body[data-theme="light"] #photo-fullscreen-viewer figure,
+body[data-theme="light"] .bg-slate-900\/60,
+body[data-theme="light"] .bg-slate-900\/40,
+body[data-theme="light"] .bg-slate-900,
+body[data-theme="light"] .bg-slate-800,
+body[data-theme="light"] .bg-slate-950\/35 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+body[data-theme="light"] .text-slate-100,
+body[data-theme="light"] .text-slate-200 {
+  color: #0f172a !important;
+}
+
+body[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+
+body[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+body[data-theme="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+body[data-theme="light"] .border-slate-800,
+body[data-theme="light"] .border-slate-700,
+body[data-theme="light"] .border-slate-700\/60,
+body[data-theme="light"] .border-slate-700\/50 {
+  border-color: #cbd5e1 !important;
+}
+
+body[data-theme="light"] button,
+body[data-theme="light"] input[type="button"],
+body[data-theme="light"] input[type="submit"],
+body[data-theme="light"] input[type="reset"],
+body[data-theme="light"] input,
+body[data-theme="light"] textarea,
+body[data-theme="light"] select {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+body[data-theme="light"] input::placeholder,
+body[data-theme="light"] textarea::placeholder {
+  color: #64748b;
+}
+
+body[data-theme="light"] header nav ul li a,
+body[data-theme="light"] header nav > a,
+body[data-theme="light"] header nav button {
+  color: #0f172a;
+}
+
+body[data-theme="light"] header nav ul li a:hover {
+  color: #4338ca;
+}
+
+body[data-theme="light"] a.hover\:border-indigo-400:hover,
+body[data-theme="light"] button.hover\:border-indigo-400:hover {
+  border-color: #4338ca !important;
+}
+
 /* Simple fade-in animation */
 .fade-in {
   animation: fadeIn 0.6s ease-in-out;
