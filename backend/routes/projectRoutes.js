@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 const { protect } = require("../middleware/authmiddleware");
 const {
   getProjects,
@@ -11,10 +12,16 @@ const {
   deleteProject,
 } = require("../controllers/projectController");
 
+const uploadDir = path.join(__dirname, "..", "uploads");
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 // Local storage (you can swap to Cloudinary later)
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, path.join(__dirname, "..", "uploads"));
+    cb(null, uploadDir);
   },
   filename(req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);

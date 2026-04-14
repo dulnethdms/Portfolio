@@ -24,6 +24,38 @@
   </header>
 
   <main class="flex-1 max-w-6xl mx-auto px-4 py-8 space-y-10 fade-in">
+    <section>
+      <header class="mb-4">
+        <h2 class="text-xl font-semibold">Admin Credentials</h2>
+        <p class="text-xs text-slate-400">Update the current admin email and password for future logins.</p>
+      </header>
+
+      <form id="admin-credentials-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <label for="admin-current-password" class="block mb-1">Current Password</label>
+          <input id="admin-current-password" name="currentPassword" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
+        </div>
+        <div>
+          <label for="admin-email" class="block mb-1">New Email</label>
+          <input id="admin-email" name="email" type="email" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
+        </div>
+        <div>
+          <label for="admin-password" class="block mb-1">New Password</label>
+          <input id="admin-password" name="password" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
+        </div>
+        <div>
+          <label for="admin-confirm-password" class="block mb-1">Confirm New Password</label>
+          <input id="admin-confirm-password" name="confirmPassword" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
+        </div>
+        <div class="md:col-span-2 flex items-center gap-3">
+          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
+            Save Admin Credentials
+          </button>
+          <p id="admin-credentials-status" class="text-xs"></p>
+        </div>
+      </form>
+    </section>
+
     <!-- Projects management -->
     <section>
       <header class="flex items-center justify-between mb-4">
@@ -90,11 +122,66 @@
         <p class="text-xs text-slate-400">You can extend this section with CRUD operations similar to projects.</p>
       </header>
     </section>
+
+    <section>
+      <header class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">CV Management</h2>
+      </header>
+
+      <form id="cv-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <label for="cv-file" class="block mb-1">Upload CV (PDF, DOC, DOCX)</label>
+          <input id="cv-file" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required class="w-full text-xs" />
+        </div>
+        <div class="flex items-end">
+          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
+            Upload CV
+          </button>
+        </div>
+        <div class="md:col-span-2 flex flex-wrap items-center gap-3">
+          <a id="current-cv-link" href="#" target="_blank" rel="noopener" class="text-xs text-indigo-300 hover:underline hidden">View current CV</a>
+          <button id="delete-cv-btn" type="button" class="px-3 py-1 border border-red-500 text-red-400 rounded text-xs hidden">
+            Remove CV
+          </button>
+          <p id="cv-form-status" class="text-xs"></p>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <header class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Homepage Photos</h2>
+        <button id="refresh-photos" class="text-xs px-3 py-1 border border-slate-700 rounded-full">
+          Refresh
+        </button>
+      </header>
+
+      <form id="photo-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <label for="photo-caption" class="block mb-1">Caption (optional)</label>
+          <input id="photo-caption" name="caption" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
+        </div>
+        <div>
+          <label for="photo-image" class="block mb-1">Image</label>
+          <input id="photo-image" name="image" type="file" accept="image/*" required class="w-full text-xs" />
+        </div>
+        <div class="md:col-span-2 flex gap-3 items-center">
+          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
+            Upload Photo
+          </button>
+          <p id="photo-form-status" class="text-xs"></p>
+        </div>
+      </form>
+
+      <div id="admin-photos-list" class="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+        <!-- Filled dynamically -->
+      </div>
+    </section>
   </main>
 
   <footer class="border-t border-slate-800 mt-10">
     <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-400">
-      &copy; <span id="year"></span> Your Name.
+      &copy; <span id="year"></span> Dulneth Damsira.
     </div>
   </footer>
 
