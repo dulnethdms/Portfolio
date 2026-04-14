@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin home settings for the portfolio." />
+  <title>AI Portfolio | Dashboard - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <header>
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+      <h1 class="font-semibold">Admin Dashboard</h1>
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Go to Homepage</a>
+        <a href="gallery.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Gallery</a>
+        <button id="logout-btn" class="text-xs px-3 py-1 border border-red-500 text-red-400 rounded-full">Logout</button>
+        <button id="theme-toggle" class="text-xs px-3 py-1 border border-slate-700 rounded-full">Toggle Theme</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bg-slate-950/80 sticky top-0 z-20 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 overflow-x-auto">
+      <nav class="flex flex-wrap justify-center gap-2 text-xs">
+        <a href="dashboard.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Overview</a>
+        <a href="dashboard-home.html" class="px-3 py-1 rounded-full border border-indigo-400 text-indigo-300">Home</a>
+        <a href="dashboard-contact.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Contact</a>
+        <a href="dashboard-about.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">About</a>
+        <a href="dashboard-projects.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Projects</a>
+        <a href="dashboard-media.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Media</a>
+        <a href="gallery.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Gallery</a>
+        <a href="dashboard-admin.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Admin</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 space-y-10 fade-in">
+    <section id="admin-home-settings" class="bg-slate-900/30 border border-slate-800 rounded-3xl p-5 md:p-6">
+      <header class="mb-4">
+        <h2 class="text-xl font-semibold">Homepage Hero Settings</h2>
+        <p class="text-xs text-slate-400">Add, edit, or remove the 3 hero texts on the home page. Leave a field empty to remove it.</p>
+      </header>
+      <form id="hero-settings-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="md:col-span-2"><label for="admin-hero-tagline" class="block mb-1">Top Tagline</label><input id="admin-hero-tagline" name="heroTagline" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" placeholder="Artificial Intelligence Student" /></div>
+        <div class="md:col-span-2"><label for="admin-hero-headline" class="block mb-1">Main Headline</label><textarea id="admin-hero-headline" name="heroHeadline" rows="2" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" placeholder="Hi, I'm Dulneth Damsira..."></textarea></div>
+        <div class="md:col-span-2"><label for="admin-hero-description" class="block mb-1">Short Description</label><textarea id="admin-hero-description" name="heroDescription" rows="2" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" placeholder="I’m an undergraduate AI student focused on..."></textarea></div>
+        <div class="md:col-span-2 flex items-center gap-3"><button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">Save Hero Settings</button><button type="button" id="reload-hero-settings" class="px-4 py-2 rounded-full border border-slate-700 text-xs">Reload</button><p id="hero-settings-status" class="text-xs"></p></div>
+      </form>
+    </section>
+
+    <section id="admin-home-ai-focus-settings" class="bg-slate-900/30 border border-slate-800 rounded-3xl p-5 md:p-6">
+      <header class="mb-4">
+        <h2 class="text-xl font-semibold">Homepage AI Focus Area Settings</h2>
+        <p class="text-xs text-slate-400">Change the section name and list of AI focus areas shown on the home page.</p>
+      </header>
+      <form id="ai-focus-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="md:col-span-2"><label for="ai-focus-title" class="block mb-1">AI Focus Section Name</label><input id="ai-focus-title" name="aiFocusTitle" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div class="md:col-span-2"><label for="ai-focus-areas" class="block mb-1">Focus Areas (one per line)</label><textarea id="ai-focus-areas" name="aiFocusAreas" rows="5" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" placeholder="Automation&#10;Generative AI&#10;Machine Learning"></textarea></div>
+        <div class="md:col-span-2 flex items-center gap-3"><button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">Save AI Focus Settings</button><button type="button" id="reload-ai-focus" class="px-4 py-2 rounded-full border border-slate-700 text-xs">Reload</button><p id="ai-focus-status" class="text-xs"></p></div>
+      </form>
+    </section>
+
+    <section id="admin-home-why-ai-settings" class="bg-slate-900/30 border border-slate-800 rounded-3xl p-5 md:p-6">
+      <header class="mb-4">
+        <h2 class="text-xl font-semibold">Homepage Why AI Section Settings</h2>
+        <p class="text-xs text-slate-400">Change every text item in the Why Artificial Intelligence section on the home page.</p>
+      </header>
+      <form id="why-ai-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="md:col-span-2"><label for="why-ai-title" class="block mb-1">Section Title</label><input id="why-ai-title" name="whyAiTitle" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div class="md:col-span-2"><label for="why-ai-description" class="block mb-1">Section Description</label><textarea id="why-ai-description" name="whyAiDescription" rows="3" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div><label for="why-ai-card1-title" class="block mb-1">Card 1 Title</label><input id="why-ai-card1-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="why-ai-card1-description" class="block mb-1">Card 1 Description</label><textarea id="why-ai-card1-description" rows="2" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div><label for="why-ai-card2-title" class="block mb-1">Card 2 Title</label><input id="why-ai-card2-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="why-ai-card2-description" class="block mb-1">Card 2 Description</label><textarea id="why-ai-card2-description" rows="2" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div><label for="why-ai-card3-title" class="block mb-1">Card 3 Title</label><input id="why-ai-card3-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="why-ai-card3-description" class="block mb-1">Card 3 Description</label><textarea id="why-ai-card3-description" rows="2" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div class="md:col-span-2 flex items-center gap-3"><button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">Save Why AI Settings</button><button type="button" id="reload-why-ai" class="px-4 py-2 rounded-full border border-slate-700 text-xs">Reload</button><p id="why-ai-status" class="text-xs"></p></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 mt-10"><div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-400">&copy; <span id="year"></span> Dulneth Damsira.</div></footer>
+  <script src="js/env.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

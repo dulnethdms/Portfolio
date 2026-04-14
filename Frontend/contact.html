@@ -9,21 +9,25 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
-  <header class="border-b border-slate-800">
+  <header>
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
       <a href="index.html" class="flex items-center gap-2">
         <span class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">AI</span>
         <span class="font-semibold tracking-wide">AI Student Portfolio</span>
       </a>
-      <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
-        Toggle Theme
-      </button>
       <ul class="hidden md:flex gap-6 text-sm">
         <li><a href="index.html" class="hover:text-indigo-400">Home</a></li>
         <li><a href="about.html" class="hover:text-indigo-400">About</a></li>
         <li><a href="projects.html" class="hover:text-indigo-400">Projects</a></li>
         <li><a href="contact.html" class="hover:text-indigo-400">Contact</a></li>
+          <li><a href="gallery.html" class="hover:text-indigo-400">Gallery</a></li>
       </ul>
+      <div class="flex items-center gap-3">
+        <a href="login.html" class="text-sm px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Admin</a>
+        <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
+          Toggle Theme
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -54,8 +58,15 @@
       </form>
 
       <section class="mt-8">
+        <h2 class="text-xl font-semibold mb-2">Contact Details</h2>
+        <ul id="contact-details-list" class="space-y-1 text-sm text-slate-300 mb-6">
+          <li id="contact-detail-email" class="hidden"></li>
+          <li id="contact-detail-phone" class="hidden"></li>
+          <li id="contact-detail-location" class="hidden"></li>
+        </ul>
+
         <h2 class="text-xl font-semibold mb-2">Social</h2>
-        <ul class="flex gap-4 text-sm text-indigo-400">
+        <ul id="contact-social-links" class="flex flex-wrap gap-4 text-sm text-indigo-400">
           <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="https://twitter.com/yourusername" target="_blank" rel="noopener">Twitter</a></li>

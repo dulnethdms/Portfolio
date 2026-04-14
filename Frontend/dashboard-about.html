@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin about page settings for the portfolio." />
+  <title>AI Portfolio | Dashboard - About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <header>
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+      <h1 class="font-semibold">Admin Dashboard</h1>
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Go to Homepage</a>
+        <a href="gallery.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Gallery</a>
+        <button id="logout-btn" class="text-xs px-3 py-1 border border-red-500 text-red-400 rounded-full">Logout</button>
+        <button id="theme-toggle" class="text-xs px-3 py-1 border border-slate-700 rounded-full">Toggle Theme</button>
+      </div>
+    </nav>
+  </header>
+  <div class="bg-slate-950/80 sticky top-0 z-20 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 overflow-x-auto">
+      <nav class="flex flex-wrap justify-center gap-2 text-xs">
+        <a href="dashboard.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Overview</a>
+        <a href="dashboard-home.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Home</a>
+        <a href="dashboard-contact.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Contact</a>
+        <a href="dashboard-about.html" class="px-3 py-1 rounded-full border border-indigo-400 text-indigo-300">About</a>
+        <a href="dashboard-projects.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Projects</a>
+        <a href="dashboard-media.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Media</a>
+        <a href="gallery.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Gallery</a>
+        <a href="dashboard-admin.html" class="px-3 py-1 rounded-full border border-slate-700 hover:border-indigo-400">Admin</a>
+      </nav>
+    </div>
+  </div>
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8">
+    <section id="admin-about-page-settings" class="bg-slate-900/30 border border-slate-800 rounded-3xl p-5 md:p-6">
+      <header class="mb-4"><h2 class="text-xl font-semibold">About Page Settings</h2><p class="text-xs text-slate-400">Edit all content items shown on the About page.</p></header>
+      <form id="about-page-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
+        <div><label for="admin-about-page-title" class="block mb-1">Page Title</label><input id="admin-about-page-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="admin-about-page-subtitle" class="block mb-1">Subtitle</label><input id="admin-about-page-subtitle" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div class="md:col-span-2"><label for="admin-about-intro-paragraph-1" class="block mb-1">Intro Paragraph 1</label><textarea id="admin-about-intro-paragraph-1" rows="3" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div class="md:col-span-2"><label for="admin-about-intro-paragraph-2" class="block mb-1">Intro Paragraph 2</label><textarea id="admin-about-intro-paragraph-2" rows="3" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea></div>
+        <div><label for="admin-about-skills-title" class="block mb-1">Skills Section Title</label><input id="admin-about-skills-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="admin-about-technical-skills-title" class="block mb-1">Technical Skills Card Title</label><input id="admin-about-technical-skills-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div class="md:col-span-2"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium">Technical Skills (Name + Percentage)</p><button id="add-about-technical-skill" type="button" class="px-3 py-1 border border-slate-700 rounded text-xs">Add Skill</button></div><div id="about-technical-skills-editor" class="space-y-3"></div></div>
+        <div><label for="admin-about-soft-skills-title" class="block mb-1">Soft Skills Card Title</label><input id="admin-about-soft-skills-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div></div>
+        <div class="md:col-span-2"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium">Soft Skills</p><button id="add-about-soft-skill" type="button" class="px-3 py-1 border border-slate-700 rounded text-xs">Add Soft Skill</button></div><div id="about-soft-skills-editor" class="space-y-3"></div></div>
+        <div><label for="admin-about-education-title" class="block mb-1">Education Section Title</label><input id="admin-about-education-title" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div></div>
+        <div class="md:col-span-2"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium">Education Items</p><button id="add-about-education-item" type="button" class="px-3 py-1 border border-slate-700 rounded text-xs">Add Education Item</button></div><div id="about-education-editor" class="space-y-3"></div></div>
+        <div><label for="admin-about-cv-button-label" class="block mb-1">CV Button Label</label><input id="admin-about-cv-button-label" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div><label for="admin-about-cv-button-url" class="block mb-1">CV Button URL</label><input id="admin-about-cv-button-url" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" /></div>
+        <div class="md:col-span-2 flex items-center gap-3"><button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">Save About Page Settings</button><button type="button" id="reload-about-page" class="px-4 py-2 rounded-full border border-slate-700 text-xs">Reload</button><p id="about-page-status" class="text-xs"></p></div>
+      </form>
+    </section>
+  </main>
+  <footer class="border-t border-slate-800 mt-10"><div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-400">&copy; <span id="year"></span> Dulneth Damsira.</div></footer>
+  <script src="js/env.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

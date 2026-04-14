@@ -9,12 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+  <body data-theme="dark" class="relative isolate overflow-x-hidden min-h-screen flex flex-col bg-slate-950 text-slate-100">
     <div id="loading-overlay" class="fixed inset-0 bg-slate-900/80 z-50 items-center justify-center">
       <div class="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
 
-    <header class="border-b border-slate-800">
+    <header class="relative z-10">
       <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
         <a href="index.html" class="flex items-center gap-2">
          <img src="https://github.com/dulnethdms/Portfolio/blob/main/IMG_3098.JPG?raw=true" 
@@ -23,65 +23,89 @@
           <span class="font-semibold tracking-wide">Dulneth Damsira</span>
         </a>
 
-        <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
-          Theme
-        </button>
         <ul class="hidden md:flex gap-6 text-sm">
           <li><a href="index.html" class="hover:text-indigo-400">Home</a></li>
           <li><a href="about.html" class="hover:text-indigo-400">About</a></li>
           <li><a href="projects.html" class="hover:text-indigo-400">Projects</a></li>
+          <li><a href="gallery.html" class="hover:text-indigo-400">Gallery</a></li>
           <li><a href="contact.html" class="hover:text-indigo-400">Contact</a></li>
-          <li><a href="login.html" class="hover:text-indigo-400">Admin</a></li>
         </ul>
+        <div class="flex items-center gap-3">
+          <a href="login.html" class="text-sm px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">Admin</a>
+          <button id="theme-toggle" class="text-sm px-3 py-1 border border-slate-700 rounded-full">
+            Theme
+          </button>
+        </div>
       </nav>
     </header>
   
 
-    <main class="flex-1">
+  <main class="relative z-10 flex-1">
       <!-- Hero -->
-      <section class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center fade-in">
-        <article>
-          <p class="text-sm uppercase tracking-[0.3em] text-indigo-400 mb-3">Artificial Intelligence Student</p>
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">
-            Hi, I'm <span class="text-indigo-400">Dulneth Damsira</span> an undergraduate AI student passionate about building intelligent systems.
+      <section class="max-w-6xl mx-auto px-4 py-16 grid lg:grid-cols-[1fr_auto_1fr] gap-10 items-center fade-in">
+        <article class="space-y-6">
+          <h1 id="hero-headline" class="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.95] tracking-[-0.04em] max-w-xl">
+            Hi, I'm <span class="text-indigo-400">Dulneth</span>
+            <br />
+            
           </h1>
-          <p class="text-slate-300 mb-6">
+          <div class="h-1.5 w-24 rounded-full bg-indigo-500/80"></div>
+          <p id="hero-description" class="text-sm md:text-base text-slate-300 max-w-md leading-7">
             I’m an undergraduate AI student focused on machine learning, deep learning, and intelligent web applications.
           </p>
-          <div class="flex flex-wrap gap-4">
+        </article>
+
+        <aside class="relative flex justify-center lg:justify-self-center mx-auto">
+          <div class="absolute inset-x-8 top-8 bottom-0 rounded-full bg-indigo-500/20 blur-3xl"></div>
+          <img
+            src="https://github.com/dulnethdms/Portfolio/blob/main/IMG_3098.JPG?raw=true"
+            alt="Dulneth Damsira portrait"
+            class="relative z-10 w-full max-w-[24rem] md:max-w-[28rem] rounded-[2.5rem] object-cover shadow-2xl shadow-indigo-950/40"
+          />
+        </aside>
+
+        <article class="space-y-6 lg:pl-6">
+          <p id="hero-tagline" class="text-xs uppercase tracking-[0.32em] text-indigo-300/80">Software Developer, based in Port Harcourt.</p>
+          <h2 class="text-2xl md:text-3xl font-semibold leading-snug max-w-md">
+            build clean interfaces and practical AI experiences for web products.
+          </h2>
+          <p class="text-sm md:text-base text-slate-300 max-w-md leading-7">
+            I like creating thoughtful digital experiences that balance design, performance, and real-world usefulness.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
             <a href="projects.html" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
               View Projects
             </a>
-            <a href="about.html" class="px-5 py-2 rounded-full border border-slate-600 text-sm font-medium hover:border-indigo-400">
-              About
+            <a href="gallery.html" class="px-5 py-2 rounded-full border border-slate-600 text-sm font-medium hover:border-indigo-400">
+              Gallery
             </a>
           </div>
         </article>
-        <aside class="relative">
-          <div class="w-full h-64 md:h-80 rounded-3xl bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400 blur-3xl opacity-40 absolute -z-10"></div>
-          <div class="bg-slate-900/60 border border-slate-700 rounded-3xl p-6 w-[420px] h-full flex flex-col justify-between ml-[65px]">
-            <h2 class="text-lg font-semibold mb-4">AI Focus Areas</h2>
-            <ul class="space-y-3 text-sm">
-              <li>• Automation</li>
-              <li>• Generative AI</li>
-              <li>• Machine Learning</li>
-              <li>• AI-powered Web Applications</li>
-            </ul>
-            <div class="mt-6 text-xs text-slate-400">
-          <!-- <p>Currently exploring: <span class="text-indigo-400">Transformers & LLMs</span></p>-->
-
-            </div>
-          </div>
-        </aside>
       </section>
       <!-- Photo Gallery -->
       <section class="max-w-6xl mx-auto px-4 py-10">
         <header class="flex items-center justify-between mb-6">
           <h2 class="text-2xl font-semibold">Featured Photos</h2>
+          <a href="gallery.html" class="inline-flex items-center px-4 py-2 rounded-full border border-slate-700 hover:border-indigo-400 text-sm">View Full Gallery</a>
         </header>
         <div id="home-photos-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           <p class="text-sm text-slate-400">Loading photos...</p>
         </div>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-4 py-10">
+        <article class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 md:p-8">
+          <header class="mb-4">
+            <p class="text-sm uppercase tracking-[0.3em] text-indigo-400 mb-2">Focus</p>
+            <h2 id="ai-focus-title" class="text-2xl font-semibold">AI Focus Areas</h2>
+          </header>
+          <ul id="ai-focus-list" class="grid gap-3 sm:grid-cols-2 text-sm">
+            <li class="rounded-2xl border border-slate-700/60 bg-slate-900/40 px-4 py-3">Automation</li>
+            <li class="rounded-2xl border border-slate-700/60 bg-slate-900/40 px-4 py-3">Generative AI</li>
+            <li class="rounded-2xl border border-slate-700/60 bg-slate-900/40 px-4 py-3">Machine Learning</li>
+            <li class="rounded-2xl border border-slate-700/60 bg-slate-900/40 px-4 py-3">AI-powered Web Applications</li>
+          </ul>
+        </article>
       </section>
 
       <!-- Featured projects -->
@@ -98,11 +122,11 @@
       <!-- AI-specific section -->
       <section class="max-w-6xl mx-auto px-4 py-10">
         <article class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8">
-          <h2 class="text-2xl font-semibold mb-3">Why Artificial Intelligence?</h2>
-          <p class="text-slate-300 mb-4">
+          <h2 id="why-ai-title" class="text-2xl font-semibold mb-3">Why Artificial Intelligence?</h2>
+          <p id="why-ai-description" class="text-slate-300 mb-4">
             I’m passionate about building systems that can perceive, reason, and learn from data—bridging theory with real-world impact.
           </p>
-          <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div id="why-ai-highlights" class="grid md:grid-cols-3 gap-4 text-sm">
             <div>
               <h3 class="font-semibold mb-1 text-indigo-300">Machine Learning</h3>
               <p>Regression, classification, clustering, and model evaluation using Python and popular ML libraries.</p>
@@ -129,8 +153,8 @@
 
     <!-- Chatbot widget -->
     <div id="chatbot-widget" class="fixed bottom-4 right-4">
-      <button id="chatbot-toggle" class="bg-indigo-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
-        ?
+      <button id="chatbot-toggle" aria-label="Open chat assistant" class="bg-indigo-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+        <img src="images/chat-message.svg" alt="Chat" class="w-6 h-6" />
       </button>
       <div id="chatbot-panel" class="hidden mt-2 w-72 bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm">
         <div class="flex justify-between items-center mb-2">

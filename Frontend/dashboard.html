@@ -9,181 +9,40 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body data-theme="dark" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
-  <header class="border-b border-slate-800">
+  <header>
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
       <h1 class="font-semibold">Admin Dashboard</h1>
       <div class="flex items-center gap-3">
-        <button id="theme-toggle" class="text-xs px-3 py-1 border border-slate-700 rounded-full">
-          Toggle Theme
-        </button>
-        <button id="logout-btn" class="text-xs px-3 py-1 border border-red-500 text-red-400 rounded-full">
-          Logout
-        </button>
+        <a href="index.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">
+          Go to Homepage
+        </a>
+        <a href="gallery.html" class="text-xs px-3 py-1 border border-slate-700 rounded-full hover:border-indigo-400">
+          Gallery
+        </a>
+        <button id="logout-btn" class="text-xs px-3 py-1 border border-red-500 text-red-400 rounded-full">Logout</button>
+        <button id="theme-toggle" class="text-xs px-3 py-1 border border-slate-700 rounded-full">Toggle Theme</button>
       </div>
     </nav>
   </header>
 
-  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 space-y-10 fade-in">
-    <section>
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-10 fade-in">
+    <section class="bg-slate-900/30 border border-slate-800 rounded-3xl p-6 md:p-8">
       <header class="mb-4">
-        <h2 class="text-xl font-semibold">Admin Credentials</h2>
-        <p class="text-xs text-slate-400">Update the current admin email and password for future logins.</p>
+        <h2 class="text-2xl font-semibold">Dashboard Sections</h2>
+        <p class="text-xs text-slate-400">Open the area you want to manage. Each page shows only its own controls.</p>
       </header>
-
-      <form id="admin-credentials-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-          <label for="admin-current-password" class="block mb-1">Current Password</label>
-          <input id="admin-current-password" name="currentPassword" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="admin-email" class="block mb-1">New Email</label>
-          <input id="admin-email" name="email" type="email" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="admin-password" class="block mb-1">New Password</label>
-          <input id="admin-password" name="password" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="admin-confirm-password" class="block mb-1">Confirm New Password</label>
-          <input id="admin-confirm-password" name="confirmPassword" type="password" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div class="md:col-span-2 flex items-center gap-3">
-          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
-            Save Admin Credentials
-          </button>
-          <p id="admin-credentials-status" class="text-xs"></p>
-        </div>
-      </form>
-    </section>
-
-    <!-- Projects management -->
-    <section>
-      <header class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-semibold">Projects</h2>
-        <button id="refresh-projects" class="text-xs px-3 py-1 border border-slate-700 rounded-full">
-          Refresh
-        </button>
-      </header>
-
-      <form id="project-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
-        <input type="hidden" id="project-id" />
-        <div>
-          <label for="title" class="block mb-1">Title</label>
-          <input id="title" name="title" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="category" class="block mb-1">Category</label>
-          <select id="category" name="category" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700">
-            <option value="ai">AI</option>
-            <option value="web">Web</option>
-            <option value="data">Data Science</option>
-          </select>
-        </div>
-        <div class="md:col-span-2">
-          <label for="description" class="block mb-1">Description</label>
-          <textarea id="description" name="description" rows="3" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700"></textarea>
-        </div>
-        <div>
-          <label for="githubUrl" class="block mb-1">GitHub URL</label>
-          <input id="githubUrl" name="githubUrl" type="url" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="liveUrl" class="block mb-1">Live URL</label>
-          <input id="liveUrl" name="liveUrl" type="url" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="techStack" class="block mb-1">Tech Stack (comma-separated)</label>
-          <input id="techStack" name="techStack" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="image" class="block mb-1">Image</label>
-          <input id="image" name="image" type="file" accept="image/*" class="w-full text-xs" />
-        </div>
-        <div class="md:col-span-2 flex gap-3">
-          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
-            Save Project
-          </button>
-          <button type="button" id="reset-project-form" class="px-4 py-2 rounded-full border border-slate-700 text-xs">
-            Reset
-          </button>
-          <p id="project-form-status" class="text-xs mt-2"></p>
-        </div>
-      </form>
-
-      <div id="admin-projects-list" class="mt-6 grid md:grid-cols-3 gap-4 text-xs">
-        <!-- Filled dynamically -->
-      </div>
-    </section>
-
-    <!-- Blog posts placeholder -->
-    <section>
-      <header class="mb-4">
-        <h2 class="text-xl font-semibold">Blog Posts (placeholder)</h2>
-        <p class="text-xs text-slate-400">You can extend this section with CRUD operations similar to projects.</p>
-      </header>
-    </section>
-
-    <section>
-      <header class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-semibold">CV Management</h2>
-      </header>
-
-      <form id="cv-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-          <label for="cv-file" class="block mb-1">Upload CV (PDF, DOC, DOCX)</label>
-          <input id="cv-file" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required class="w-full text-xs" />
-        </div>
-        <div class="flex items-end">
-          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
-            Upload CV
-          </button>
-        </div>
-        <div class="md:col-span-2 flex flex-wrap items-center gap-3">
-          <a id="current-cv-link" href="#" target="_blank" rel="noopener" class="text-xs text-indigo-300 hover:underline hidden">View current CV</a>
-          <button id="delete-cv-btn" type="button" class="px-3 py-1 border border-red-500 text-red-400 rounded text-xs hidden">
-            Remove CV
-          </button>
-          <p id="cv-form-status" class="text-xs"></p>
-        </div>
-      </form>
-    </section>
-
-    <section>
-      <header class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-semibold">Homepage Photos</h2>
-        <button id="refresh-photos" class="text-xs px-3 py-1 border border-slate-700 rounded-full">
-          Refresh
-        </button>
-      </header>
-
-      <form id="photo-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 grid md:grid-cols-2 gap-4 text-sm">
-        <div>
-          <label for="photo-caption" class="block mb-1">Caption (optional)</label>
-          <input id="photo-caption" name="caption" class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700" />
-        </div>
-        <div>
-          <label for="photo-image" class="block mb-1">Image</label>
-          <input id="photo-image" name="image" type="file" accept="image/*" required class="w-full text-xs" />
-        </div>
-        <div class="md:col-span-2 flex gap-3 items-center">
-          <button type="submit" class="px-4 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-xs font-medium">
-            Upload Photo
-          </button>
-          <p id="photo-form-status" class="text-xs"></p>
-        </div>
-      </form>
-
-      <div id="admin-photos-list" class="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-        <!-- Filled dynamically -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+        <a href="dashboard-admin.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">Admin</h3><p class="text-xs text-slate-400">Login email and password</p></a>
+        <a href="dashboard-home.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">Home</h3><p class="text-xs text-slate-400">Hero, AI focus, and Why AI content</p></a>
+        <a href="dashboard-contact.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">Contact</h3><p class="text-xs text-slate-400">Contact details and social links</p></a>
+        <a href="dashboard-about.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">About</h3><p class="text-xs text-slate-400">All About page content</p></a>
+        <a href="dashboard-projects.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">Projects</h3><p class="text-xs text-slate-400">Project CRUD management</p></a>
+        <a href="dashboard-media.html" class="block p-4 rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-indigo-400 transition"><h3 class="font-semibold mb-1">Media</h3><p class="text-xs text-slate-400">CV and homepage photos</p></a>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-800 mt-10">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-400">
-      &copy; <span id="year"></span> Dulneth Damsira.
-    </div>
-  </footer>
+  <footer class="border-t border-slate-800 mt-10"><div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-400">&copy; <span id="year"></span> Dulneth Damsira.</div></footer>
 
   <script src="js/env.js"></script>
   <script src="js/main.js"></script>

@@ -38,6 +38,7 @@ app.use("/api/projects", require("./routes/projectRoutes"));
 app.use("/api/photos", require("./routes/photoRoutes"));
 app.use("/api/cv", require("./routes/cvRoutes"));
 app.use("/api/contact", require("./routes/contactRoutes"));
+app.use("/api/site-settings", require("./routes/siteSettingsRoutes"));
 
 // 404 handler
 app.use((req, res) => {
