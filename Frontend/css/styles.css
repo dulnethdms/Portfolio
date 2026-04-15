@@ -39,6 +39,47 @@ body[data-theme="light"] .text-slate-200 {
   color: #0f172a !important;
 }
 
+body[data-theme="light"] .text-indigo-300,
+body[data-theme="light"] .text-indigo-400,
+body[data-theme="light"] .text-indigo-500 {
+  color: #4f46e5 !important;
+}
+
+body[data-theme="light"] #home-hero article,
+body[data-theme="light"] #home-hero aside,
+body[data-theme="light"] #home-hero .bg-gradient-to-br,
+body[data-theme="light"] #home-hero .hero-ai-graphic {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+body[data-theme="light"] #home-hero article {
+  color: inherit !important;
+}
+
+body[data-theme="light"] #home-hero .hero-ai-graphic {
+  opacity: 0.45;
+}
+
+body[data-theme="light"] #home-hero .hero-ai-graphic g[stroke] {
+  stroke: rgba(79, 70, 229, 0.34);
+}
+
+body[data-theme="light"] #home-hero .hero-ai-graphic g[fill] {
+  fill: rgba(79, 70, 229, 0.18);
+  stroke: rgba(79, 70, 229, 0.34);
+}
+
+body[data-theme="light"] #home-hero .hero-ai-graphic path {
+  stroke: rgba(79, 70, 229, 0.34);
+}
+
+body[data-theme="light"] #home-hero .hero-ai-graphic circle {
+  fill: rgba(79, 70, 229, 0.18);
+  stroke: rgba(79, 70, 229, 0.34);
+}
+
 body[data-theme="light"] .text-slate-300 {
   color: #334155 !important;
 }
@@ -83,6 +124,31 @@ body[data-theme="light"] header nav button {
 
 body[data-theme="light"] header nav ul li a:hover {
   color: #4338ca;
+}
+
+body[data-theme="light"] #home-hero h1,
+body[data-theme="light"] #home-hero h2,
+body[data-theme="light"] #home-hero p {
+  color: #0f172a;
+}
+
+body[data-theme="light"] #home-hero #hero-description,
+body[data-theme="light"] #home-hero #hero-tagline {
+  color: #475569 !important;
+}
+
+body[data-theme="light"] #home-hero .bg-indigo-500\/80 {
+  background-color: rgba(79, 70, 229, 0.45) !important;
+}
+
+body[data-theme="light"] #home-hero a.bg-indigo-500 {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="light"] #home-hero a.border-slate-600 {
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
 }
 
 body[data-theme="light"] a.hover\:border-indigo-400:hover,

@@ -39,7 +39,7 @@
 
   <main class="relative z-10 flex-1">
       <!-- Hero -->
-      <section class="max-w-6xl mx-auto px-4 py-16 grid lg:grid-cols-[1fr_auto_1fr] gap-10 items-center fade-in">
+      <section id="home-hero" class="max-w-6xl mx-auto px-4 pt-8 pb-16 grid lg:grid-cols-[1fr_auto_1fr] gap-10 items-center fade-in">
         <article class="space-y-6 -mt-6 md:-mt-12">
           <h1 id="hero-headline" class="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.95] tracking-[-0.04em] max-w-xl">
             <span>Hi, I'm</span>
@@ -49,14 +49,38 @@
           <p id="hero-description" class="text-sm md:text-base text-slate-300 max-w-md leading-7">
             I’m an undergraduate AI student focused on machine learning, deep learning, and intelligent web applications.
           </p>
+          <div class="mt-2 md:mt-3 max-w-md">
+            <svg viewBox="0 0 300 200" aria-hidden="true" class="hero-ai-graphic mx-auto w-36 md:w-44 h-auto opacity-60">
+              <g fill="none" stroke="rgba(199, 210, 254, 0.45)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M52 66 L120 28 L174 82 L96 120 L52 66" />
+                <path d="M120 28 L174 82 L226 30" />
+                <path d="M96 120 L174 82 L226 136" />
+                <path d="M52 120 L96 120 L174 164 L226 136" />
+                <path d="M52 120 L78 84" />
+                <path d="M96 58 L120 28" />
+              </g>
+              <g fill="rgba(226, 232, 240, 0.35)" stroke="rgba(199, 210, 254, 0.45)" stroke-width="7">
+                <circle cx="52" cy="66" r="11" />
+                <circle cx="120" cy="28" r="11" />
+                <circle cx="174" cy="82" r="11" />
+                <circle cx="226" cy="30" r="11" />
+                <circle cx="52" cy="120" r="11" />
+                <circle cx="96" cy="120" r="11" />
+                <circle cx="174" cy="164" r="11" />
+                <circle cx="226" cy="136" r="11" />
+                <circle cx="226" cy="186" r="11" />
+              </g>
+              <path d="M174 164 L226 186" fill="none" stroke="rgba(199, 210, 254, 0.45)" stroke-width="7" stroke-linecap="round" />
+            </svg>
+          </div>
         </article>
 
         <aside class="relative flex justify-center lg:justify-self-center mx-auto">
-          <div class="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 w-40 h-56 md:w-64 md:h-80 rounded-full bg-gradient-to-br from-cyan-400/35 via-indigo-500/30 to-fuchsia-500/25 blur-3xl z-0"></div>
+          <div class="absolute -top-6 md:-top-12 left-1/2 -translate-x-1/2 w-40 h-56 md:w-64 md:h-80 rounded-full bg-gradient-to-br from-cyan-400/35 via-indigo-500/30 to-fuchsia-500/25 blur-3xl z-0"></div>
           <img
-            src="https://github.com/dulnethdms/Portfolio/blob/main/Images/Index%20homepage.png?raw=true"
+            src="https://github.com/dulnethdms/Portfolio/blob/main/Images/Hero%20Image.png?raw=true"
             alt="Dulneth Damsira portrait"
-            class="hero-image-intro relative z-10 -mt-4 md:-mt-8 -ml-4 md:-ml-8 w-[2rem] md:w-[28rem] lg:w-[38rem] max-w-none object-cover"
+            class="hero-image-intro relative z-10 -mt-10 md:-mt-16 -ml-4 md:-ml-8 w-[2rem] md:w-[28rem] lg:w-[38rem] max-w-none object-cover"
           />
         </aside>
 
