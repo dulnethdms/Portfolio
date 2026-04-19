@@ -3,6 +3,44 @@
   --bg-light: #f9fafb;
   --text-dark: #0f172a;
   --text-light: #e5e7eb;
+  --fluid-gutter: clamp(0.875rem, 2.8vw, 2.25rem);
+  --fluid-max-wide: 92rem;
+  --fluid-max-content: 76rem;
+  --fluid-max-reading: 64rem;
+  --fluid-max-compact: 30rem;
+}
+
+/* Fluid containers for all pages that use Tailwind max-width utilities. */
+.max-w-6xl,
+.max-w-4xl,
+.max-w-3xl,
+.max-w-sm {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none !important;
+}
+
+.max-w-6xl {
+  width: min(calc(100% - (var(--fluid-gutter) * 2)), var(--fluid-max-wide)) !important;
+}
+
+.max-w-4xl {
+  width: min(calc(100% - (var(--fluid-gutter) * 2)), var(--fluid-max-content)) !important;
+}
+
+.max-w-3xl {
+  width: min(calc(100% - (var(--fluid-gutter) * 2)), var(--fluid-max-reading)) !important;
+}
+
+.max-w-sm {
+  width: min(calc(100% - (var(--fluid-gutter) * 2)), var(--fluid-max-compact)) !important;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
 }
 
 html {
@@ -268,9 +306,16 @@ header > nav.max-w-6xl {
 }
 
 header > nav.max-w-6xl > ul {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  transform: none;
+}
+
+@media (min-width: 1024px) {
+  header > nav.max-w-6xl > ul {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* Match primary header nav links to the admin button outline style. */
