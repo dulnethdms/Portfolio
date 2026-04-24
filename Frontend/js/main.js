@@ -1,4 +1,9 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE =
+  (window.APP_CONFIG && window.APP_CONFIG.API_BASE) ||
+  (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? `${window.location.protocol}//${window.location.hostname}:5000/api`
+    : "/api");
+window.API_BASE = API_BASE;
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));

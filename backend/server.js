@@ -1,4 +1,8 @@
-require("dotenv").config();
+try {
+  require("dotenv").config();
+} catch (_) {
+  // dotenv is optional in serverless runtime where env vars are already injected.
+}
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
@@ -14,9 +18,17 @@ const allowedOrigins = [
   "http://127.0.0.1:3000",
 ];
 
+const envOrigins = String(process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const allAllowedOrigins = [...allowedOrigins, ...envOrigins];
+
 function isAllowedOrigin(origin) {
   if (!origin) return true;
-  if (allowedOrigins.includes(origin)) return true;
+  if (allAllowedOrigins.includes(origin)) return true;
+  if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) return true;
   return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin);
 }
 
@@ -60,4 +72,9 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;
