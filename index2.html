@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Dulneth Damsira portfolio website in a single HTML file." />
+	<title>Dulneth Damsira | AI Portfolio</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		:root {
+			color-scheme: dark;
+			--bg: #050816;
+			--panel: rgba(15, 23, 42, 0.72);
+			--panel-soft: rgba(15, 23, 42, 0.48);
+			--line: rgba(148, 163, 184, 0.2);
+			--text: #e2e8f0;
+			--muted: #94a3b8;
+			--accent: #38bdf8;
+			--accent-2: #818cf8;
+			--accent-3: #34d399;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			background:
+				radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.18), transparent 0 28%),
+				radial-gradient(circle at 82% 14%, rgba(129, 140, 248, 0.18), transparent 0 24%),
+				radial-gradient(circle at 70% 78%, rgba(52, 211, 153, 0.12), transparent 0 26%),
+				linear-gradient(180deg, #020617 0%, #050816 45%, #020617 100%);
+			color: var(--text);
+		}
+
+		body[data-theme="light"] {
+			color-scheme: light;
+			background:
+				radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.12), transparent 0 28%),
+				radial-gradient(circle at 82% 14%, rgba(129, 140, 248, 0.12), transparent 0 24%),
+				radial-gradient(circle at 70% 78%, rgba(52, 211, 153, 0.10), transparent 0 26%),
+				linear-gradient(180deg, #f8fafc 0%, #eef2ff 45%, #f8fafc 100%);
+			color: #0f172a;
+		}
+
+		body[data-theme="light"] .glass,
+		body[data-theme="light"] .surface {
+			background: rgba(255, 255, 255, 0.78) !important;
+			border-color: rgba(148, 163, 184, 0.38) !important;
+			color: #0f172a !important;
+		}
+
+		body[data-theme="light"] .muted,
+		body[data-theme="light"] .text-slate-300,
+		body[data-theme="light"] .text-slate-400 {
+			color: #475569 !important;
+		}
+
+		.glass {
+			background: var(--panel);
+			backdrop-filter: blur(18px);
+			border: 1px solid var(--line);
+			box-shadow: 0 24px 70px rgba(2, 6, 23, 0.35);
+		}
+
+		.surface {
+			background: var(--panel-soft);
+			backdrop-filter: blur(14px);
+			border: 1px solid var(--line);
+		}
+
+		.section-frame {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.section-frame::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), transparent 34%, rgba(129, 140, 248, 0.08));
+			pointer-events: none;
+		}
+
+		.orb {
+			position: absolute;
+			border-radius: 9999px;
+			filter: blur(50px);
+			opacity: 0.85;
+			pointer-events: none;
+			animation: drift 14s ease-in-out infinite alternate;
+		}
+
+		.orb.one { background: rgba(56, 189, 248, 0.22); width: 22rem; height: 22rem; top: -6rem; left: -4rem; }
+		.orb.two { background: rgba(129, 140, 248, 0.20); width: 28rem; height: 28rem; top: 10rem; right: -8rem; animation-duration: 18s; }
+		.orb.three { background: rgba(52, 211, 153, 0.12); width: 24rem; height: 24rem; bottom: -8rem; left: 28%; animation-duration: 20s; }
+
+		@keyframes drift {
+			from { transform: translate3d(0, 0, 0) scale(0.98); }
+			to { transform: translate3d(0, 18px, 0) scale(1.04); }
+		}
+
+		@keyframes fadeUp {
+			from { opacity: 0; transform: translate3d(0, 18px, 0); }
+			to { opacity: 1; transform: translate3d(0, 0, 0); }
+		}
+
+		.reveal {
+			animation: fadeUp 700ms ease both;
+		}
+
+		.reveal.delay-1 { animation-delay: 120ms; }
+		.reveal.delay-2 { animation-delay: 240ms; }
+		.reveal.delay-3 { animation-delay: 360ms; }
+
+		.chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.45rem;
+			padding: 0.5rem 0.75rem;
+			border-radius: 9999px;
+			border: 1px solid rgba(148, 163, 184, 0.22);
+			background: rgba(15, 23, 42, 0.42);
+			font-size: 0.78rem;
+			letter-spacing: 0.02em;
+		}
+
+		.card-hover {
+			transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+		}
+
+		.card-hover:hover {
+			transform: translateY(-4px);
+			border-color: rgba(56, 189, 248, 0.4);
+			box-shadow: 0 18px 40px rgba(8, 15, 35, 0.28);
+		}
+
+		.gallery-tile {
+			position: relative;
+			overflow: hidden;
+			min-height: 16rem;
+			border-radius: 1.5rem;
+		}
+
+		.gallery-tile img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 240ms ease;
+		}
+
+		.gallery-tile:hover img {
+			transform: scale(1.04);
+		}
+
+		.gallery-overlay {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, transparent 10%, rgba(2, 6, 23, 0.72) 100%);
+			display: flex;
+			align-items: end;
+			padding: 1rem;
+		}
+
+		.lightbox {
+			position: fixed;
+			inset: 0;
+			background: rgba(2, 6, 23, 0.92);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			z-index: 80;
+			padding: 1rem;
+		}
+
+		.lightbox.open {
+			display: flex;
+		}
+
+		.lightbox img {
+			max-height: 86vh;
+			max-width: 100%;
+			border-radius: 1.5rem;
+			box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+		}
+
+		.progress-line {
+			height: 0.35rem;
+			border-radius: 9999px;
+			background: rgba(148, 163, 184, 0.16);
+			overflow: hidden;
+		}
+
+		.progress-line > span {
+			display: block;
+			height: 100%;
+			border-radius: inherit;
+			background: linear-gradient(90deg, var(--accent), var(--accent-2));
+		}
+	</style>
+</head>
+<body data-theme="dark" class="min-h-screen overflow-x-hidden text-slate-100">
+	<div class="orb one"></div>
+	<div class="orb two"></div>
+	<div class="orb three"></div>
+
+	<header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+		<div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
+			<a href="#home" class="flex items-center gap-3">
+				<span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 font-semibold text-slate-950">AI</span>
+				<span class="font-semibold tracking-[0.22em] uppercase text-sm">Dulneth Damsira</span>
+			</a>
+
+			<nav class="hidden lg:flex items-center gap-5 text-sm text-slate-300">
+				<a href="#home" class="hover:text-cyan-300">Home</a>
+				<a href="#about" class="hover:text-cyan-300">About</a>
+				<a href="#projects" class="hover:text-cyan-300">Projects</a>
+				<a href="#gallery" class="hover:text-cyan-300">Gallery</a>
+				<a href="#contact" class="hover:text-cyan-300">Contact</a>
+				<a href="#admin" class="hover:text-cyan-300">Admin</a>
+			</nav>
+
+			<div class="flex items-center gap-2">
+				<button id="theme-toggle" type="button" class="chip hover:border-cyan-300/60">Theme</button>
+				<a href="#admin" class="chip bg-cyan-400/15 hover:border-cyan-300/60">Login</a>
+			</div>
+		</div>
+	</header>
+
+	<main class="relative z-10 mx-auto max-w-7xl px-4 pb-20">
+		<section id="home" class="section-frame reveal">
+			<div class="grid gap-10 py-10 lg:grid-cols-[1.05fr_0.9fr] lg:items-center lg:py-16">
+				<div class="space-y-6">
+					<div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.32em] text-cyan-300/80">
+						<span class="chip">AI Student</span>
+						<span class="chip">Web Interfaces</span>
+						<span class="chip">Practical ML</span>
+					</div>
+
+					<div class="space-y-4">
+						<p id="hero-tagline" class="text-sm uppercase tracking-[0.38em] text-cyan-300">AI Development. Clean design. Real utility.</p>
+						<h1 id="hero-headline" class="max-w-4xl text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
+							<span class="block text-slate-200">Hi, I'm</span>
+							<span class="block bg-gradient-to-r from-cyan-300 via-indigo-300 to-emerald-300 bg-clip-text text-transparent">Dulneth</span>
+						</h1>
+						<p id="hero-description" class="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+							I’m an undergraduate AI student focused on machine learning, deep learning, and intelligent web applications that feel polished, fast, and useful.
+						</p>
+					</div>
+
+					<div class="flex flex-wrap gap-3">
+						<a href="#projects" class="rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">Explore Projects</a>
+						<a href="#gallery" class="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/60">View Gallery</a>
+						<a href="#contact" class="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/60">Contact Me</a>
+					</div>
+
+					<div class="grid gap-4 pt-2 sm:grid-cols-3">
+						<div class="glass rounded-2xl p-4">
+							<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Focus</p>
+							<p class="mt-2 text-lg font-semibold">Machine Learning</p>
+						</div>
+						<div class="glass rounded-2xl p-4">
+							<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Builds</p>
+							<p class="mt-2 text-lg font-semibold">Web + AI Apps</p>
+						</div>
+						<div class="glass rounded-2xl p-4">
+							<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Mindset</p>
+							<p class="mt-2 text-lg font-semibold">Practical and Clear</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="relative">
+					<div class="absolute -inset-8 rounded-[2.5rem] bg-gradient-to-br from-cyan-500/15 via-indigo-500/10 to-emerald-400/10 blur-2xl"></div>
+					<div class="glass relative overflow-hidden rounded-[2rem] p-4 sm:p-6">
+						<img src="Images/Hero Image.png" alt="Dulneth Damsira portrait" class="mx-auto w-full max-w-[32rem] rounded-[1.6rem] object-cover shadow-2xl" />
+						<div class="mt-4 grid gap-3 sm:grid-cols-2">
+							<div class="surface rounded-2xl p-4">
+								<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Current mode</p>
+								<p class="mt-2 font-semibold">Building interfaces with AI in mind.</p>
+							</div>
+							<div class="surface rounded-2xl p-4">
+								<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Profile</p>
+								<p class="mt-2 font-semibold">Undergraduate AI student</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="reveal delay-1 py-6">
+			<div class="grid gap-4 md:grid-cols-4">
+				<div class="surface rounded-3xl p-5">
+					<p class="text-xs uppercase tracking-[0.3em] text-cyan-300">01</p>
+					<h2 class="mt-3 text-xl font-semibold">AI Foundations</h2>
+					<p class="mt-2 text-sm text-slate-300">Learning models, patterns, and deployment so ideas become useful tools.</p>
+				</div>
+				<div class="surface rounded-3xl p-5">
+					<p class="text-xs uppercase tracking-[0.3em] text-cyan-300">02</p>
+					<h2 class="mt-3 text-xl font-semibold">UI Craft</h2>
+					<p class="mt-2 text-sm text-slate-300">Strong layouts, motion, and spacing that make content feel intentional.</p>
+				</div>
+				<div class="surface rounded-3xl p-5">
+					<p class="text-xs uppercase tracking-[0.3em] text-cyan-300">03</p>
+					<h2 class="mt-3 text-xl font-semibold">Full Stack</h2>
+					<p class="mt-2 text-sm text-slate-300">Connecting frontend polish with backend APIs and data persistence.</p>
+				</div>
+				<div class="surface rounded-3xl p-5">
+					<p class="text-xs uppercase tracking-[0.3em] text-cyan-300">04</p>
+					<h2 class="mt-3 text-xl font-semibold">Iteration</h2>
+					<p class="mt-2 text-sm text-slate-300">Testing, refining, and improving every page with a practical mindset.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="section-frame reveal delay-2 py-10">
+			<div class="surface rounded-[2rem] p-6 sm:p-8 lg:p-10">
+				<div class="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+					<div>
+						<p class="text-sm uppercase tracking-[0.32em] text-cyan-300">About</p>
+						<h2 class="mt-3 text-3xl font-semibold sm:text-4xl">A concise profile with technical depth.</h2>
+						<p class="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+							I am an undergraduate student pursuing a degree in Artificial Intelligence, with a strong interest in machine learning, deep learning, and intelligent web applications. I enjoy turning data into insights and building systems that can learn from experience.
+						</p>
+						<p class="mt-3 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+							My work spans academic projects, personal experiments, and open-source contributions, focusing on practical applications of AI such as recommendation systems, computer vision, and natural language processing.
+						</p>
+
+						<div class="mt-6 flex flex-wrap gap-2 text-xs">
+							<span class="chip">Python & ML Libraries</span>
+							<span class="chip">Deep Learning</span>
+							<span class="chip">JavaScript</span>
+							<span class="chip">Node.js</span>
+							<span class="chip">MongoDB</span>
+						</div>
+					</div>
+
+					<div class="grid gap-4">
+						<div class="surface rounded-3xl p-5">
+							<div class="flex items-center justify-between gap-4">
+								<h3 class="font-semibold">Technical Skills</h3>
+								<span class="text-xs uppercase tracking-[0.24em] text-slate-400">80%</span>
+							</div>
+							<div class="mt-4 space-y-4">
+								<div>
+									<div class="mb-2 flex items-center justify-between text-sm"><span>Python & ML Libraries</span><span>80%</span></div>
+									<div class="progress-line"><span style="width:80%"></span></div>
+								</div>
+								<div>
+									<div class="mb-2 flex items-center justify-between text-sm"><span>Deep Learning</span><span>70%</span></div>
+									<div class="progress-line"><span style="width:70%"></span></div>
+								</div>
+								<div>
+									<div class="mb-2 flex items-center justify-between text-sm"><span>JavaScript & React</span><span>75%</span></div>
+									<div class="progress-line"><span style="width:75%"></span></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="surface rounded-3xl p-5">
+							<h3 class="font-semibold">Education & Growth</h3>
+							<ul class="mt-4 space-y-3 text-sm text-slate-300">
+								<li>• Undergraduate study in Artificial Intelligence</li>
+								<li>• Practical experiments in model building and deployment</li>
+								<li>• Ongoing focus on design systems and interface quality</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="projects" class="reveal delay-3 py-10">
+			<div class="flex items-end justify-between gap-4">
+				<div>
+					<p class="text-sm uppercase tracking-[0.32em] text-cyan-300">Projects</p>
+					<h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Selected work, condensed into one page.</h2>
+				</div>
+				<p class="hidden max-w-xl text-sm text-slate-400 md:block">These cards are rendered from a small inline data set and can be replaced with live API data when the backend is available.</p>
+			</div>
+			<div id="projects-grid" class="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4"></div>
+		</section>
+
+		<section id="gallery" class="section-frame reveal py-10">
+			<div class="surface rounded-[2rem] p-6 sm:p-8">
+				<div class="flex flex-wrap items-end justify-between gap-4">
+					<div>
+						<p class="text-sm uppercase tracking-[0.32em] text-cyan-300">Gallery</p>
+						<h2 class="mt-3 text-3xl font-semibold sm:text-4xl">A visual strip with a few featured moments.</h2>
+					</div>
+					<p class="max-w-xl text-sm text-slate-400">Click any tile to open the image in a larger view. The gallery uses the local hero image plus a few curated visuals to keep the page self-contained.</p>
+				</div>
+
+				<div id="gallery-grid" class="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3"></div>
+			</div>
+		</section>
+
+		<section id="contact" class="reveal py-10">
+			<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+				<div class="surface rounded-[2rem] p-6 sm:p-8">
+					<p class="text-sm uppercase tracking-[0.32em] text-cyan-300">Contact</p>
+					<h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Get in touch for collaborations, internships, or questions.</h2>
+					<p class="mt-4 text-sm leading-7 text-slate-300">Reach out if you want to talk about AI projects, web interfaces, or collaboration opportunities.</p>
+
+					<div class="mt-6 space-y-3 text-sm text-slate-300">
+						<p><span class="text-slate-400">Email:</span> dulneth@example.com</p>
+						<p><span class="text-slate-400">Phone:</span> +94 71 234 5678</p>
+						<p><span class="text-slate-400">Location:</span> Colombo, Sri Lanka</p>
+					</div>
+				</div>
+
+				<form id="contact-form" class="glass rounded-[2rem] p-6 sm:p-8">
+					<h3 class="text-2xl font-semibold">Send a message</h3>
+					<div class="mt-5 grid gap-4">
+						<label class="grid gap-2 text-sm">
+							<span class="text-slate-300">Name</span>
+							<input id="contact-name" type="text" class="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60" placeholder="Your name" required />
+						</label>
+						<label class="grid gap-2 text-sm">
+							<span class="text-slate-300">Email</span>
+							<input id="contact-email" type="email" class="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60" placeholder="you@example.com" required />
+						</label>
+						<label class="grid gap-2 text-sm">
+							<span class="text-slate-300">Message</span>
+							<textarea id="contact-message" rows="5" class="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60" placeholder="Tell me about your idea..." required></textarea>
+						</label>
+						<button class="rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300" type="submit">Send Message</button>
+						<p id="contact-status" class="text-sm text-slate-400"></p>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<section id="admin" class="reveal py-10">
+			<div class="surface rounded-[2rem] p-6 sm:p-8 lg:p-10">
+				<div class="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+					<div>
+						<p class="text-sm uppercase tracking-[0.32em] text-cyan-300">Admin</p>
+						<h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Core dashboard access in the same file.</h2>
+						<p class="mt-4 text-sm leading-7 text-slate-300">
+							This single-page version keeps the login entry point handy. If the backend API is available, the form can authenticate and store the token just like the original multi-page site.
+						</p>
+
+						<div class="mt-6 grid gap-4 sm:grid-cols-2">
+							<div class="glass rounded-2xl p-4">
+								<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Dashboard focus</p>
+								<p class="mt-2 font-semibold">Home, About, Contact, Projects, Media</p>
+							</div>
+							<div class="glass rounded-2xl p-4">
+								<p class="text-xs uppercase tracking-[0.24em] text-slate-400">Purpose</p>
+								<p class="mt-2 font-semibold">Keep content and visuals in sync</p>
+							</div>
+						</div>
+					</div>
+
+					<form id="login-form" class="glass rounded-[1.75rem] p-6">
+						<h3 class="text-2xl font-semibold">Admin Login</h3>
+						<div class="mt-5 grid gap-4">
+							<label class="grid gap-2 text-sm">
+								<span class="text-slate-300">Email</span>
+								<input id="login-email" type="email" class="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60" placeholder="admin@example.com" required />
+							</label>
+							<label class="grid gap-2 text-sm">
+								<span class="text-slate-300">Password</span>
+								<input id="login-password" type="password" class="rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60" placeholder="••••••••" required />
+							</label>
+							<button class="rounded-full bg-indigo-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-400" type="submit">Login</button>
+							<p id="login-status" class="text-sm text-slate-400"></p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="border-t border-white/10 bg-slate-950/40">
+		<div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+			<p>&copy; <span id="year"></span> Dulneth Damsira. All rights reserved.</p>
+			<p>Single-file build of the portfolio website.</p>
+		</div>
+	</footer>
+
+	<div id="lightbox" class="lightbox" aria-hidden="true">
+		<button id="lightbox-close" type="button" class="absolute right-4 top-4 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm text-white">Close</button>
+		<figure class="w-full max-w-5xl">
+			<img id="lightbox-image" src="" alt="Expanded gallery view" />
+			<figcaption id="lightbox-caption" class="mt-3 text-center text-sm text-slate-300"></figcaption>
+		</figure>
+	</div>
+
+	<script>
+		const API_BASE =
+			window.location.protocol === "file:"
+				? "http://localhost:5000/api"
+				: (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+					? `${window.location.protocol}//${window.location.hostname}:5000/api`
+					: "/api");
+
+		const fallbackProjects = [
+			{
+				title: "Smart Study Planner",
+				category: "ai",
+				description: "A productivity concept that uses recommendation logic to suggest study blocks and revision topics.",
+				techStack: ["Python", "ML", "Flask"],
+				imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+				liveUrl: "#contact",
+			},
+			{
+				title: "Portfolio Assistant",
+				category: "web",
+				description: "A polished single-page portfolio with animated sections, contact capture, and theme switching.",
+				techStack: ["HTML", "Tailwind", "JavaScript"],
+				imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+				githubUrl: "#admin",
+			},
+			{
+				title: "Vision Classifier",
+				category: "ai",
+				description: "A computer vision prototype for image-based prediction and quick model iteration.",
+				techStack: ["CNN", "PyTorch", "Data Prep"],
+				imageUrl: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1200&q=80",
+			},
+			{
+				title: "Research Notes Dashboard",
+				category: "data",
+				description: "A lightweight dashboard for tracking experiments, ideas, and project notes in one place.",
+				techStack: ["Node.js", "MongoDB", "Charts"],
+				imageUrl: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
+			},
+		];
+
+		const fallbackGallery = [
+			{
+				imageUrl: "Images/Hero Image.png",
+				caption: "Portrait study shot",
+			},
+			{
+				imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+				caption: "Workspace and ideas in motion",
+			},
+			{
+				imageUrl: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+				caption: "Engineering focus and clean code",
+			},
+			{
+				imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+				caption: "AI thinking, visualized",
+			},
+			{
+				imageUrl: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+				caption: "A compact build environment",
+			},
+			{
+				imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+				caption: "Second angle on the same creative desk",
+			},
+		];
+
+		const $ = (selector) => document.querySelector(selector);
+		const projectsGrid = $("#projects-grid");
+		const galleryGrid = $("#gallery-grid");
+		const themeToggle = $("#theme-toggle");
+		const yearEl = $("#year");
+		const contactForm = $("#contact-form");
+		const loginForm = $("#login-form");
+		const lightbox = $("#lightbox");
+		const lightboxImage = $("#lightbox-image");
+		const lightboxCaption = $("#lightbox-caption");
+		const lightboxClose = $("#lightbox-close");
+
+		function setTheme(theme) {
+			document.body.setAttribute("data-theme", theme);
+			localStorage.setItem("theme", theme);
+			themeToggle.textContent = theme === "dark" ? "Theme" : "Theme";
+		}
+
+		function openLightbox(src, caption) {
+			lightboxImage.src = src;
+			lightboxCaption.textContent = caption || "";
+			lightbox.classList.add("open");
+			lightbox.setAttribute("aria-hidden", "false");
+			document.body.classList.add("overflow-hidden");
+		}
+
+		function closeLightbox() {
+			lightbox.classList.remove("open");
+			lightbox.setAttribute("aria-hidden", "true");
+			document.body.classList.remove("overflow-hidden");
+		}
+
+		function projectCard(project) {
+			const article = document.createElement("article");
+			article.className = "glass card-hover rounded-[1.75rem] overflow-hidden";
+			article.innerHTML = `
+				<img src="${project.imageUrl || "https://via.placeholder.com/800x520"}" alt="${project.title}" class="h-48 w-full object-cover" />
+				<div class="p-5">
+					<p class="text-xs uppercase tracking-[0.28em] text-cyan-300">${project.category || "project"}</p>
+					<h3 class="mt-2 text-xl font-semibold">${project.title || "Untitled Project"}</h3>
+					<p class="mt-3 text-sm leading-7 text-slate-300">${project.description || ""}</p>
+					<div class="mt-4 flex flex-wrap gap-2 text-[11px] text-slate-300"></div>
+					<div class="mt-5 flex items-center justify-between gap-3 text-sm">
+						<a href="${project.liveUrl || "#projects"}" class="rounded-full border border-white/12 px-3 py-2 hover:border-cyan-300/60">Live</a>
+						<a href="${project.githubUrl || "#contact"}" class="rounded-full border border-white/12 px-3 py-2 hover:border-cyan-300/60">Details</a>
+					</div>
+				</div>
+			`;
+
+			const stack = article.querySelector("div.mt-4");
+			(project.techStack || []).forEach((skill) => {
+				const chip = document.createElement("span");
+				chip.className = "chip";
+				chip.textContent = skill;
+				stack.appendChild(chip);
+			});
+
+			return article;
+		}
+
+		function galleryTile(item) {
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "gallery-tile glass text-left";
+			button.innerHTML = `
+				<img src="${item.imageUrl}" alt="${item.caption}" />
+				<div class="gallery-overlay">
+					<div>
+						<p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Gallery</p>
+						<p class="mt-2 max-w-sm text-sm text-slate-100">${item.caption}</p>
+					</div>
+				</div>
+			`;
+			button.addEventListener("click", () => openLightbox(item.imageUrl, item.caption));
+			return button;
+		}
+
+		async function fetchJson(url) {
+			const response = await fetch(url);
+			if (!response.ok) throw new Error("Request failed");
+			return response.json();
+		}
+
+		async function loadProjects() {
+			try {
+				const data = await fetchJson(`${API_BASE}/projects`);
+				const items = Array.isArray(data) && data.length ? data : fallbackProjects;
+				projectsGrid.innerHTML = "";
+				items.slice(0, 8).forEach((project) => projectsGrid.appendChild(projectCard(project)));
+			} catch (_error) {
+				projectsGrid.innerHTML = "";
+				fallbackProjects.forEach((project) => projectsGrid.appendChild(projectCard(project)));
+			}
+		}
+
+		async function loadGallery() {
+			try {
+				const data = await fetchJson(`${API_BASE}/photos`);
+				const items = Array.isArray(data) && data.length
+					? data.map((photo) => ({ imageUrl: photo.imageUrl || fallbackGallery[0].imageUrl, caption: photo.caption || "Portfolio photo" }))
+					: fallbackGallery;
+				galleryGrid.innerHTML = "";
+				items.slice(0, 6).forEach((item) => galleryGrid.appendChild(galleryTile(item)));
+			} catch (_error) {
+				galleryGrid.innerHTML = "";
+				fallbackGallery.forEach((item) => galleryGrid.appendChild(galleryTile(item)));
+			}
+		}
+
+		themeToggle.addEventListener("click", () => {
+			const current = document.body.getAttribute("data-theme") || "dark";
+			setTheme(current === "dark" ? "light" : "dark");
+		});
+
+		contactForm.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			const status = $("#contact-status");
+			const payload = {
+				name: $("#contact-name").value.trim(),
+				email: $("#contact-email").value.trim(),
+				message: $("#contact-message").value.trim(),
+			};
+
+			if (!payload.name || !payload.email || !payload.message) {
+				status.textContent = "Please fill in all fields.";
+				return;
+			}
+
+			try {
+				const response = await fetch(`${API_BASE}/contact`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(payload),
+				});
+
+				const data = await response.json().catch(() => ({}));
+				if (!response.ok) throw new Error(data.message || "Failed to send message");
+				status.textContent = "Message sent successfully.";
+				contactForm.reset();
+			} catch (_error) {
+				status.textContent = "Unable to reach the API right now. Please email directly instead.";
+			}
+		});
+
+		loginForm.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			const status = $("#login-status");
+			const payload = {
+				email: $("#login-email").value.trim(),
+				password: $("#login-password").value.trim(),
+			};
+
+			if (!payload.email || !payload.password) {
+				status.textContent = "Please enter email and password.";
+				return;
+			}
+
+			try {
+				const response = await fetch(`${API_BASE}/auth/login`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(payload),
+				});
+
+				const data = await response.json().catch(() => ({}));
+				if (!response.ok) throw new Error(data.message || "Login failed");
+
+				localStorage.setItem("token", data.token);
+				status.textContent = "Login successful. Token saved.";
+			} catch (error) {
+				status.textContent = error.message || "Login failed.";
+			}
+		});
+
+		lightbox.addEventListener("click", (event) => {
+			if (event.target === lightbox || event.target === lightboxClose) closeLightbox();
+		});
+
+		lightboxClose.addEventListener("click", closeLightbox);
+		window.addEventListener("keydown", (event) => {
+			if (event.key === "Escape") closeLightbox();
+		});
+
+		const savedTheme = localStorage.getItem("theme");
+		if (savedTheme === "light" || savedTheme === "dark") {
+			setTheme(savedTheme);
+		}
+
+		yearEl.textContent = new Date().getFullYear();
+		loadProjects();
+		loadGallery();
+	</script>
+</body>
+</html>
