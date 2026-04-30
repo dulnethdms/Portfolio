@@ -21,11 +21,11 @@
         </a>
 
         <ul class="hidden md:flex gap-6 text-sm">
-          <li><a href="index.html" class="hover:text-indigo-400">Home</a></li>
-          <li><a href="about.html" class="hover:text-indigo-400">About</a></li>
-          <li><a href="projects.html" class="hover:text-indigo-400">Projects</a></li>
+          <li><a href="#home-hero" class="hover:text-indigo-400">Home</a></li>
+          <li><a href="#about-section" class="hover:text-indigo-400">About</a></li>
+          <li><a href="#projects-section" class="hover:text-indigo-400">Projects</a></li>
           <li><a href="gallery.html" class="hover:text-indigo-400">Gallery</a></li>
-          <li><a href="contact.html" class="hover:text-indigo-400">Contact</a></li>
+          <li><a href="#contact-section" class="hover:text-indigo-400">Contact</a></li>
         </ul>
         <div class="flex items-center gap-3">
           <a href="login.html" class="text-sm px-3 py-1 rounded-full">Admin</a>
@@ -76,7 +76,6 @@
         </article>
 
         <aside class="relative flex justify-center lg:justify-self-center mx-auto">
-          <div class="absolute -top-6 md:-top-12 left-1/2 -translate-x-1/2 w-40 h-56 md:w-64 md:h-80 rounded-full bg-gradient-to-br from-cyan-400/35 via-indigo-500/30 to-fuchsia-500/25 blur-3xl z-0"></div>
           <img
             src="https://github.com/dulnethdms/Portfolio/blob/main/Images/Hero%20Image.png?raw=true"
             alt="Dulneth Damsira portrait"
@@ -93,7 +92,7 @@
             I like creating thoughtful digital experiences that balance design, performance, and real-world usefulness.
           </p>
           <div class="flex flex-wrap gap-4 pt-2">
-            <a href="projects.html" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
+            <a href="#projects-section" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
               View Projects
             </a>
             <a href="gallery.html" class="px-5 py-2 rounded-full border border-slate-600 text-sm font-medium hover:border-indigo-400">
@@ -103,16 +102,7 @@
         </article>
 
       </section>
-      <!-- Photo Gallery -->
-      <section class="max-w-6xl mx-auto px-4 py-10">
-        <header class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-semibold">Featured Photos</h2>
-          <a href="gallery.html" class="inline-flex items-center px-4 py-2 rounded-full border border-slate-700 hover:border-indigo-400 text-sm">View Full Gallery</a>
-        </header>
-        <div id="home-photos-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <p class="text-sm text-slate-400">Loading photos...</p>
-        </div>
-      </section>
+      <!-- Featured Photos removed -->
 
       <section class="max-w-6xl mx-auto px-4 py-10">
         <article class="w-full bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8">
@@ -128,17 +118,27 @@
           </ul>
         </article>
       </section>
-
-      <!-- Featured projects -->
-      <section class="max-w-6xl mx-auto px-4 py-10">
-        <header class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-semibold">Featured AI Projects</h2>
-          <a href="projects.html" class="text-sm text-indigo-400 hover:underline">View all</a>
+      <!-- Projects moved here -->
+      <section id="projects-section" class="max-w-6xl mx-auto px-4 py-6">
+        <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 class="text-3xl font-bold mb-1">Projects</h1>
+            <p class="text-slate-300 text-sm">AI, web, and data science projects with real-world applications.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <button class="project-filter px-3 py-1 rounded-full border border-slate-700 bg-indigo-500" data-filter="all">All</button>
+            <button class="project-filter px-3 py-1 rounded-full border border-slate-700" data-filter="ai">AI</button>
+            <button class="project-filter px-3 py-1 rounded-full border border-slate-700" data-filter="web">Web</button>
+            <button class="project-filter px-3 py-1 rounded-full border border-slate-700" data-filter="data">Data Science</button>
+          </div>
         </header>
-        <div id="featured-projects" class="grid md:grid-cols-3 gap-6">
-          <!-- Filled dynamically by JS -->
-        </div>
+
+        <section>
+          <div id="projects-grid" class="grid md:grid-cols-3 gap-6"></div>
+        </section>
       </section>
+
+      <!-- Featured projects removed -->
 
       <!-- AI-specific section -->
       <section class="max-w-6xl mx-auto px-4 py-10">
@@ -163,6 +163,142 @@
           </div>
         </article>
       </section>
+    
+      <!-- Inserted pages -->
+      <section id="about-section" class="max-w-6xl mx-auto px-4 py-10">
+        <div class="flex-1 max-w-6xl mx-auto px-4 py-10 space-y-10 fade-in">
+          <section>
+            <header class="mb-4">
+              <h1 id="about-page-title" class="text-3xl font-bold mb-2">About Me</h1>
+              <p id="about-page-subtitle" class="text-slate-300 text-sm">Undergraduate student specializing in Artificial Intelligence.</p>
+            </header>
+            <article class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+              <p id="about-intro-paragraph-1" class="mb-3">
+                I am an undergraduate student pursuing a degree in Artificial Intelligence, with a strong interest in
+                machine learning, deep learning, and intelligent web applications. I enjoy turning data into insights and
+                building systems that can learn from experience.
+              </p>
+              <p id="about-intro-paragraph-2">
+                My work spans academic projects, personal experiments, and open-source contributions, focusing on practical
+                applications of AI such as recommendation systems, computer vision, and natural language processing.
+              </p>
+            </article>
+          </section>
+
+          <section>
+            <header class="mb-4">
+              <h2 id="about-skills-title" class="text-2xl font-semibold">Skills</h2>
+            </header>
+            <div class="grid md:grid-cols-2 gap-6">
+              <article class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5">
+                <h3 id="about-technical-skills-title" class="font-semibold mb-3 text-indigo-300">Technical Skills</h3>
+                <ul id="about-technical-skills-list" class="space-y-3 text-sm">
+                  <li>
+                    <div class="flex justify-between mb-1">
+                      <span>Python & ML Libraries</span><span>80%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2">
+                      <div class="bg-indigo-500 h-2 rounded-full" style="width: 80%;"></div>
+                    </div>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5">
+                <h3 id="about-soft-skills-title" class="font-semibold mb-3 text-indigo-300">Soft Skills</h3>
+                <ul id="about-soft-skills-list" class="space-y-2 text-sm list-disc list-inside">
+                  <li>Problem-solving and analytical thinking</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section>
+            <header class="mb-4">
+              <h2 id="about-education-title" class="text-2xl font-semibold">Education</h2>
+            </header>
+            <ol id="about-education-list" class="border-l border-slate-700 space-y-6 text-sm">
+              <li class="ml-4">
+                <div class="w-3 h-3 bg-indigo-500 rounded-full -ml-[7px] mb-1"></div>
+                <h3 class="font-semibold">BSc in Artificial Intelligence</h3>
+                <p class="text-slate-300">Your University Name</p>
+                <p class="text-slate-400 text-xs">2023 – Present</p>
+                <p class="mt-1">Coursework: Machine Learning, Deep Learning, Data Structures, Algorithms, Databases, Web Development.</p>
+              </li>
+              <li class="ml-4">
+                <div class="w-3 h-3 bg-indigo-500 rounded-full -ml-[7px] mb-1"></div>
+                <h3 class="font-semibold">Relevant Certifications</h3>
+                <p class="text-slate-300">Online ML/AI courses (Coursera, edX, etc.)</p>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <a id="about-cv-button" href="assets/YourName_CV.pdf" download class="inline-flex items-center px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
+              Download CV
+            </a>
+          </section>
+        </div>
+      </section>
+
+      <section id="contact-section" class="max-w-3xl mx-auto px-4 py-10">
+        <div class="flex-1 max-w-3xl mx-auto px-4 py-10 fade-in">
+          <section>
+            <header class="mb-4">
+              <h1 class="text-3xl font-bold mb-1">Contact</h1>
+              <p class="text-slate-300 text-sm">Reach out for collaborations, internships, or questions.</p>
+            </header>
+
+            <form id="contact-form" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
+              <div>
+                <label for="name" class="block text-sm mb-1">Name</label>
+                <input id="name" name="name" type="text" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm mb-1">Email</label>
+                <input id="email" name="email" type="email" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm" />
+              </div>
+              <div>
+                <label for="message" class="block text-sm mb-1">Message</label>
+                <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 rounded bg-slate-900 border border-slate-700 text-sm"></textarea>
+              </div>
+              <button type="submit" class="px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm font-medium">
+                Send Message
+              </button>
+              <p id="contact-status" class="text-xs mt-2"></p>
+            </form>
+
+            <section class="mt-8">
+              <h2 class="text-xl font-semibold mb-2">Contact Details</h2>
+              <ul id="contact-details-list" class="space-y-1 text-sm text-slate-300 mb-6">
+                <li id="contact-detail-email" class="hidden"></li>
+                <li id="contact-detail-phone" class="hidden"></li>
+                <li id="contact-detail-location" class="hidden"></li>
+              </ul>
+
+              <h2 class="text-xl font-semibold mb-2">Social</h2>
+              <ul id="contact-social-links" class="flex flex-wrap gap-4 text-sm text-indigo-400">
+                <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://twitter.com/yourusername" target="_blank" rel="noopener">Twitter</a></li>
+              </ul>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <!-- projects section moved under focus above -->
+
+      <section id="project-details-section" class="max-w-4xl mx-auto px-4 py-10">
+        <article id="project-details" class="flex-1 max-w-4xl mx-auto px-4 py-10 fade-in">
+          <p class="text-sm text-slate-400">Loading project...</p>
+        </article>
+      </section>
+
+      <!-- Login section removed -->
+
+      
+
     </main>
 
     <footer class="border-t border-slate-800 mt-10">
